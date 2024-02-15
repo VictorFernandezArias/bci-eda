@@ -8,7 +8,7 @@
         delay: "{{ eda_delay }}"
   rules:
     - name: Dynatrace
-      condition: event.title == "No process found for rule httpd-alert"
+      condition: event.title == "Test EDA"
       actions:
         - debug:
 #       run_job_template:
