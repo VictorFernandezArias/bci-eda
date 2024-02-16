@@ -11,6 +11,7 @@
       condition:
         all:
          - event.title == "Test EDA"
+         - event.recentComments.comments is denifed 
         #  - event.recentComments.comments.[0].content is defined 
       actions:
         # - debug:
