@@ -18,9 +18,9 @@
       - run_job_template:
           name: "GoogleDrive_Token"
           organization: "BCI"
-          # job_args:
-          #     extra_vars:
-          #       dynatrace_problem_title: "{{ event.title }}"
-          #       dynatrace_problem_comment: "{{ event.recentComments.comments.[0].content }}"
+          job_args:
+            extra_vars:
+              sdm: "{{ event.title }}"
+
 
         
