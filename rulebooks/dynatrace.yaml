@@ -15,8 +15,8 @@
       actions:
         # - debug:
       - run_job_template:
-          name: "Hello World"
-          organization: "Default"
+          name: "GoogleDrive_Token"
+          organization: "BCI"
           # job_args:
           #     extra_vars:
           #       dynatrace_problem_title: "{{ event.title }}"
