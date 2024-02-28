@@ -20,7 +20,7 @@
           organization: "BCI"
           job_args:
             extra_vars:
-              sdm: "{{ events.title }}"
+              sdm: "{{ events.m_1.title }}"
 
 
         
