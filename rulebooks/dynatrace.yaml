@@ -10,8 +10,8 @@
     - name: Dynatrace
       condition:
         all:
-         - event.title == "lnx-pilotomondata"
-         - event.recentComments.totalCount != 0
+         - events.title == "lnx-pilotomondata"
+         - events.recentComments.totalCount != 0
         #  - event.recentComments.comments.[0].content is defined 
       actions:
         # - debug:
@@ -20,7 +20,7 @@
           organization: "BCI"
           job_args:
             extra_vars:
-              sdm: "{{ event.title }}"
+              sdm: "{{ events.title }}"
 
 
         
