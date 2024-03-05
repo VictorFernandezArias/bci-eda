@@ -14,7 +14,7 @@
          - events.recentComments.totalCount != 0
         #  - event.recentComments.comments.[0].content is defined 
       actions:
-        # - debug:
+      - debug:
       - run_job_template:
           name: "GoogleDrive_Token"
           organization: "BCI"
