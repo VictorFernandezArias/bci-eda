@@ -10,8 +10,8 @@
     - name: Dynatrace
       condition:
         all:
-         - events.title == "lnx-pilotomondata"
-         - events.recentComments.totalCount != 0
+         - event.title == "lnx-pilotomondata"
+         - event.recentComments.totalCount != 0
         #  - event.recentComments.comments.[0].content is defined 
       actions:
       - debug:
