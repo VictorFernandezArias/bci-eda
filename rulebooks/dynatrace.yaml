@@ -11,16 +11,11 @@
       condition:
         all:
          - event.title == "lnx-pilotomondata"
-         - event.recentComments.totalCount != 0
-        #  - event.recentComments.comments.[0].content is defined 
-      actions:
-      - debug:
-      - run_job_template:
+      action:
+        run_job_template:
           name: "GoogleDrive_Token"
           organization: "BCI"
-#          job_args:
-#            extra_vars:
-#              sdm: "{{ events.m_1.title }}"
+
 
 
         
