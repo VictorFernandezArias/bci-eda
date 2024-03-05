@@ -18,9 +18,9 @@
       - run_job_template:
           name: "GoogleDrive_Token"
           organization: "BCI"
-          job_args:
-            extra_vars:
-              sdm: "{{ events.m_1.title }}"
+#          job_args:
+#            extra_vars:
+#              sdm: "{{ events.m_1.title }}"
 
 
         
