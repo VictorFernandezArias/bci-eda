@@ -13,6 +13,7 @@
          - event.title == "demo-alert"
       actions:
         - debug:
+            var: event
         - run_job_template:
             name: "Hello World"
             organization: "Default"
