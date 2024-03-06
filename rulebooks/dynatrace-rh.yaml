@@ -11,7 +11,6 @@
       condition:
         all:
          - event.title == "demo-alert"
-         - event.status == "OPEN"
       actions:
         - debug:
             var: event
