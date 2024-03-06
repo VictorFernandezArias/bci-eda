@@ -11,9 +11,13 @@
       condition:
         all:
          - event.title == "demo-alert"
+         - event.recentComments.totalCount != 0
       actions:
         - debug:
             var: event
         - run_job_template:
             name: "Hello World"
             organization: "Default"
+            job_args:
+              extra_vars:
+                sdm: "{{ event.title }}"
