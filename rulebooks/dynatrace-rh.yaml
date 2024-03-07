@@ -11,8 +11,7 @@
       condition:
         all:
          - event.title == "demo-alert" 
-         - event.recentComments is search ("Event Driven Ansible", ignorecase=true) #comments.[*].context != "Event Driven Ansible"
-         - event.recentComments.totalCount > 0
+         - event.recentComments.totalCount > 1
       actions:
         - debug:
             var: event
