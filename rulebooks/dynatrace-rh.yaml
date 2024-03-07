@@ -10,8 +10,7 @@
     - name: Dynatrace
       condition:
         all:
-         - event.title == "demo-alert"
-         - event.recentComments.comments.[*].content == "prueba"
+         - event.title == "demo-alert" and event.recentComments.totalCount >= 0
       actions:
         - debug:
             var: event
