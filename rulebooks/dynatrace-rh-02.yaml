@@ -8,6 +8,10 @@
         delay: "{{ eda_delay }}"
   rules:
     - name: Dynatrace-debug
-      condition: event.title == "demo-alert" 
+      condition: event.title == "demo-alert"
+      throttle:
+        once_after: 1 minutes
+        group_by_attributes:
+          - event.recentComments.totalCount > 1
       action:
         debug:
