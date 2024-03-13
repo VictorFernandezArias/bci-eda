@@ -12,7 +12,7 @@
        all:
          - event.title == "demo-alert"
          - event.recentComments.totalCount > 1
-       timeout: 3 minutes  
+       timeout: 2 minutes  
       #throttle:
       #  once_after: 1 minutes
       #  group_by_attributes:
