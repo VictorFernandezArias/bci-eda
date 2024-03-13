@@ -10,7 +10,7 @@
     - name: Dynatrace
       condition: event.title == "demo-alert"
       throttle:
-        once_after: 2 minutes
+        once_after: 1 minutes
         group_by_attributes:
           - event.recentComments.totalCount > 3
       #condition:
@@ -25,4 +25,4 @@
             organization: "Default"
             job_args:
               extra_vars:
-                sdm: "{{ event.recentComments.totalCount | string }}"
+                sdm: "{{ event.title }}"
