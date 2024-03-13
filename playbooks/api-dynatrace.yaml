@@ -13,3 +13,7 @@
           Content-Type: application/json
           accept: application/json
           Authorization: Api-Token {{ dynatrace_token }}
+      register: json_salida
+
+    - debug: 
+        var: json_salida
