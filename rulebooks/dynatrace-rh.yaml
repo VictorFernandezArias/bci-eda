@@ -7,8 +7,18 @@
         dt_api_token: "{{ eda_token }}"
         delay: "{{ eda_delay }}"
   rules:
+    - name: Dynatrace-debug
+      condition: 
+      all:
+        - event.title == "demo-alert" 
+      actions:
+        - debug:
+        
     - name: Dynatrace
-      condition: event.title == "demo-alert" and event.recentComments.totalCount > 1
+      condition: 
+      all:
+        - event.title == "demo-alert" 
+        - events.m_0.recentComments.totalCount > 1
       timeout: 1 minutes  
       #throttle:
       #  once_after: 1 minutes
