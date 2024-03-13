@@ -12,7 +12,7 @@
       throttle:
         once_after: 2 minutes
         group_by_attributes:
-          - event.recentComments.totalCount > 1
+          - event.recentComments.totalCount > 3
       #condition:
       #  all:
       #   - event.title == "demo-alert" 
@@ -25,4 +25,4 @@
             organization: "Default"
             job_args:
               extra_vars:
-                sdm: "{{ event.recentComments.comments.[1].content }}"
+                sdm: "{{ event.recentComments.totalCount }}"
