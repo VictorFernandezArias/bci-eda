@@ -6,10 +6,6 @@
         dt_api_host: "{{ eda_host }}"
         dt_api_token: "{{ eda_token }}"
         delay: "{{ eda_delay }}"
-      filters:
-      - json_filter:
-          include_keys: ['title', 'status']
-          exclude_keys: ['meta', 'severityLevel']
   rules:
     - name: Dynatrace-debug
       condition: event.title == "demo-alert"
