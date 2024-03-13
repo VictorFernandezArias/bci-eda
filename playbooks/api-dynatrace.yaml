@@ -16,4 +16,4 @@
       register: json_salida
 
     - debug: 
-        var: json_salida.json.recentComments.comments.[1].content
+        var: json_salida.json.recentComments.comments[1].content
