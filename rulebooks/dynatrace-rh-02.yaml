@@ -1,0 +1,15 @@
+- name: Dynatrace 
+  hosts: all
+  sources:
+    - name: dynatrace Saas
+      dynatrace.event_driven_ansible.dt_esa_api:
+        dt_api_host: "{{ eda_host }}"
+        dt_api_token: "{{ eda_token }}"
+        delay: "{{ eda_delay }}"
+  rules:
+    - name: Dynatrace-debug
+      condition: 
+      all:
+        - event.title == "demo-alert" 
+      actions:
+        - debug:
