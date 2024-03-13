@@ -9,7 +9,7 @@
   rules:
     - name: Dynatrace
       condition: event.title == "demo-alert" and event.recentComments.totalCount > 1
-       timeout: 2 minutes  
+      timeout: 1 minutes  
       #throttle:
       #  once_after: 1 minutes
       #  group_by_attributes:
