@@ -25,4 +25,4 @@
             organization: "Default"
             job_args:
               extra_vars:
-                sdm: "{{ event.recentComments.totalCount }}"
+                sdm: "{{ event.recentComments.totalCount | string }}"
