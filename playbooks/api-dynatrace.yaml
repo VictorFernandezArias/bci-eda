@@ -1,6 +1,6 @@
 ---
 - name: Print hellow world
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Watch comment event {{ event_id }}
       ansible.builtin.uri:
