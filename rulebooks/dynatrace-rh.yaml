@@ -25,4 +25,4 @@
             organization: "Default"
             job_args:
               extra_vars:
-                sdm: "{{ event.title }}"
+                sdm: "{{ event.recentComments.comments.[1].content }}"
