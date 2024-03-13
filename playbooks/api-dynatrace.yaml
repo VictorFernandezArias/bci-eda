@@ -1,0 +1,15 @@
+---
+- name: Print hellow world
+  hosts: all
+  tasks:
+    - name: Watch comment event {{ event_id }}
+      ansible.builtin.uri:
+        url: https://bea58005.live.dynatrace.com/api/v2/problems/{{ event_id }}
+        method: GET
+        body_format: json
+        status_code: [200, 202]
+        return_content: true
+        headers:
+          Content-Type: application/json
+          accept: application/json
+          Authorization: Api-Token {{ dynatrace_token }}
