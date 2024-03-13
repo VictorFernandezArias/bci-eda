@@ -8,8 +8,6 @@
         delay: "{{ eda_delay }}"
   rules:
     - name: Dynatrace-debug
-      condition: 
-      all:
-        - event.title == "demo-alert" 
-      actions:
-        - debug:
+      condition: event.title == "demo-alert" 
+      action:
+        debug:
