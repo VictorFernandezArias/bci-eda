@@ -15,3 +15,14 @@
           - event.recentComments.totalCount > 1
       action:
         debug:
+
+    - name: Dynatrace
+      condition: event.title == "demo-alert" and events.m_0.recentComments.totalCount > 1
+      actions:
+        - debug:
+        - run_job_template:
+            name: "Hello World"
+            organization: "Default"
+            job_args:
+              extra_vars:
+                sdm: "{{ event.title }}"
