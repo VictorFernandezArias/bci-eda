@@ -26,5 +26,5 @@
       ansible.builtin.set_stats:
         data:
           dynatrace_event_id: "{{ dynatrace_event_id }}"
-          dynatrace_event_title: "{{ dynatrace_event_title }}"
+          dynatrace_event_title: "{{ json_salida.json.title }}"
           sdm_ticket: "{{ sdm_ticket }}"

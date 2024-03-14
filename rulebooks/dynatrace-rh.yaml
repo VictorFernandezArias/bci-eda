@@ -16,7 +16,6 @@
           job_args:
             extra_vars:
               dynatrace_event_id: "{{ event.problemId }}"
-              dynatrace_event_title: "{{ event.title }}"
     - name: Dynatrace - Remediacion 02
       condition: event.title == "another-alert-02"
       action:
