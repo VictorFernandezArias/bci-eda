@@ -20,6 +20,14 @@
                 dynatrace_event_id: "{{ event.problemId }}"
                 dynatrace_event_title: "{{ event.title }}"
 
+        - run_job_template:  
+            name: "Dynatrace - Remediacion 02"
+            organization: "Default"
+            job_args:
+              extra_vars:
+                dynatrace_event_id: "{{ event.problemId }}"
+                dynatrace_event_title: "{{ event.title }}"
+
     # - name: Dynatrace - Remediacion 02
     #   condition: event.title == "another-alert-02"
     #   action:
