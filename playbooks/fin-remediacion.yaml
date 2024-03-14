@@ -1,0 +1,7 @@
+---
+- name: SDM comentario y cierre
+  hosts: all
+  tasks:
+    - name: 'FIN Remediacion - Titulo Alerta: {{ dynatrace_event_title }} - ID: {{ dynatrace_event_id }}'
+      debug: 
+        msg: 'Se da FIN a la Remediacion - Titulo Alerta: {{ dynatrace_event_title }} - ID: {{ dynatrace_event_id }}'

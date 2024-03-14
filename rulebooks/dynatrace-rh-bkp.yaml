@@ -1,0 +1,39 @@
+- name: Dynatrace 
+  hosts: all
+  sources:
+    - name: dynatrace Saas
+      dynatrace.event_driven_ansible.dt_esa_api:
+        dt_api_host: "{{ eda_host }}"
+        dt_api_token: "{{ eda_token }}"
+        delay: "{{ eda_delay }}"
+  rules:
+    - name: Dynatrace-debug
+      condition: 
+      all:
+        - event.title == "demo-alert" 
+      actions:
+        - debug:
+        
+    - name: Dynatrace
+      condition: 
+      all:
+        - event.title == "demo-alert" 
+        - events.m_0.recentComments.totalCount > 1
+      timeout: 1 minutes  
+      #throttle:
+      #  once_after: 1 minutes
+      #  group_by_attributes:
+      #    - event.recentComments.totalCount > 3
+      #condition:
+      #  all:
+      #   - event.title == "demo-alert" 
+      #   - event.recentComments.totalCount > 1
+      actions:
+        - debug:
+            var: event
+        - run_job_template:
+            name: "Hello World"
+            organization: "Default"
+            job_args:
+              extra_vars:
+                sdm: "{{ event.title }}"

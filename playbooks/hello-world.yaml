@@ -1,5 +1,5 @@
 ---
-- name: Print hellow world
+- name: Print hello world
   hosts: all
   tasks:
     - name: hello world

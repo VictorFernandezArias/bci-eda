@@ -7,33 +7,25 @@
         dt_api_token: "{{ eda_token }}"
         delay: "{{ eda_delay }}"
   rules:
-    - name: Dynatrace-debug
-      condition: 
-      all:
-        - event.title == "demo-alert" 
-      actions:
-        - debug:
-        
-    - name: Dynatrace
-      condition: 
-      all:
-        - event.title == "demo-alert" 
-        - events.m_0.recentComments.totalCount > 1
-      timeout: 1 minutes  
-      #throttle:
-      #  once_after: 1 minutes
-      #  group_by_attributes:
-      #    - event.recentComments.totalCount > 3
-      #condition:
-      #  all:
-      #   - event.title == "demo-alert" 
-      #   - event.recentComments.totalCount > 1
-      actions:
-        - debug:
-            var: event
-        - run_job_template:
-            name: "Hello World"
-            organization: "Default"
-            job_args:
-              extra_vars:
-                sdm: "{{ event.title }}"
+    - name: Dynatrace - Remediacion 01
+      condition: event.title == "alert-remediacion-01"
+      action:
+        run_workflow_template:
+          name: "WF - Autoremediacion 01"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              dynatrace_event_id: "{{ event.problemId }}"
+              dynatrace_event_title: "{{ event.title }}"
+    - name: Dynatrace - Remediacion 02
+      condition: event.title == "alert-remediacion-02"
+      action:
+        run_workflow_template:
+          name: "WF - Autoremediacion 02"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              dynatrace_event_id: "{{ event.problemId }}"
+              dynatrace_event_title: "{{ event.title }}"              
+
+

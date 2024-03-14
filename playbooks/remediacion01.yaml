@@ -1,0 +1,12 @@
+---
+- name: Remediacion 01
+  hosts: localhost
+  tasks:
+    - name: 'Remediacion 01 - Titulo Alerta: {{ dynatrace_event_title }} - ID: {{ dynatrace_event_id }}'
+      debug: 
+        msg: 'Se da comienzo a la Remediacion 01 - Titulo Alerta: {{ dynatrace_event_title }} - ID: {{ dynatrace_event_id }}'
+
+    - name: 'Falla si es que variable force_error es true'
+      fail:
+        msg: 'Error forzado!'
+      when: force_error

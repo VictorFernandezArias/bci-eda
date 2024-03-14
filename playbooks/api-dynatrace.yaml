@@ -1,10 +1,10 @@
 ---
-- name: Print hellow world
+- name: Obtener Informacion Dynatrace
   hosts: localhost
   tasks:
-    - name: Watch comment event {{ event_id }}
+    - name: 'Validar que evento titulo: {{ dynatrace_event_title }} id: {{ dynatrace_event_id }} tenga 2 comentarios'
       ansible.builtin.uri:
-        url: https://bea58005.live.dynatrace.com/api/v2/problems/{{ event_id }}
+        url: https://bea58005.live.dynatrace.com/api/v2/problems/{{ dynatrace_event_id }}
         method: GET
         body_format: json
         status_code: [200, 202]
@@ -14,9 +14,17 @@
           accept: application/json
           Authorization: Api-Token {{ dynatrace_token }}
       register: json_salida
-      retries: 10
-      delay: 10
+      # Espera 5 minutos a que se agregue el comentario con el ticket SDM
+      retries: 15
+      delay: 20
       until: json_salida.json.recentComments.totalCount == 2
 
     - debug: 
         var: json_salida.json.recentComments.comments[0].content
+
+    - name: 'Entrega de variables al siguiente Nodo de WF'
+      ansible.builtin.set_stats:
+        data:
+          dynatrace_event_id: "{{ dynatrace_event_id }}"
+          dynatrace_event_title: "{{ dynatrace_event_title }}"
+          sdm_ticket: "{{ sdm_ticket }}"
