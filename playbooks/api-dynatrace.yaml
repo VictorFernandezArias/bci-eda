@@ -15,8 +15,8 @@
           Authorization: Api-Token {{ dynatrace_token }}
       register: json_salida
       # Espera 5 minutos a que se agregue el comentario con el ticket SDM
-      retries: 15
-      delay: 20
+      retries: 30
+      delay: 10
       until: json_salida.json.recentComments.totalCount == 2
 
     - debug: 
