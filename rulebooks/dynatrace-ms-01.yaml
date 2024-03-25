@@ -1,0 +1,21 @@
+- name: Dynatrace 
+  hosts: all
+  sources:
+    - name: dynatrace Saas
+      dynatrace.event_driven_ansible.dt_esa_api:
+        dt_api_host: "{{ eda_host }}"
+        dt_api_token: "{{ eda_token }}"
+        delay: "{{ eda_delay }}"
+  rules:
+    - name: Dynatrace - MS 01
+      condition: event.title == "Test EDA reinicio ms-destinatariostransferencias-neg-re-v5-8"
+      actions:
+        - debug:
+
+        - run_job_template:
+            name: "ID06_Reinicio_Microservicios"
+            organization: "BCI"
+            #job_args:
+            #  extra_vars:
+            #    namespace: "{{ event.problemId }}"
+            #    microservicio: "{{ event.title }}"
