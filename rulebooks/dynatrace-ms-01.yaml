@@ -13,9 +13,9 @@
         - debug:
 
         - run_job_template:
-            name: "ID06_Reinicio_Microservicios"
+            name: "api_dynastrace"
             organization: "BCI"
-            #job_args:
-            #  extra_vars:
-            #    namespace: "{{ event.problemId }}"
-            #    microservicio: "{{ event.title }}"
+            job_args:
+              extra_vars:
+                dynatrace_event_id: "{{ event.problemId }}"
+                dynatrace_event_title: "{{ event.title }}"
