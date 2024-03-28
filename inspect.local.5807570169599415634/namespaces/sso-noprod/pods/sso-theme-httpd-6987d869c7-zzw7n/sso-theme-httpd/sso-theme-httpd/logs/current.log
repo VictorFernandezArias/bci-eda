@@ -1,0 +1,30 @@
+2024-01-31T21:44:58.880080600Z => sourcing 10-set-mpm.sh ...
+2024-01-31T21:44:58.888029544Z => sourcing 20-copy-config.sh ...
+2024-01-31T21:44:58.896172296Z => sourcing 40-ssl-certs.sh ...
+2024-01-31T21:44:58.957497748Z AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.129.3.229. Set the 'ServerName' directive globally to suppress this message
+2024-01-31T21:44:58.961831474Z [Wed Jan 31 21:44:58.961723 2024] [ssl:warn] [pid 1] AH01909: 10.129.3.229:8443:0 server certificate does NOT include an ID which matches the server name
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962384 2024] [:notice] [pid 1] ModSecurity for Apache/2.9.3 (http://www.modsecurity.org/) configured.
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962395 2024] [:notice] [pid 1] ModSecurity: APR compiled version="1.4.8"; loaded version="1.4.8"
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962397 2024] [:notice] [pid 1] ModSecurity: PCRE compiled version="8.32 "; loaded version="8.32 2012-11-30"
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962399 2024] [:notice] [pid 1] ModSecurity: LUA compiled version="Lua 5.1"
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962400 2024] [:notice] [pid 1] ModSecurity: YAJL compiled version="2.0.4"
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962401 2024] [:notice] [pid 1] ModSecurity: LIBXML compiled version="2.9.1"
+2024-01-31T21:44:58.962420374Z [Wed Jan 31 21:44:58.962402 2024] [:notice] [pid 1] ModSecurity: Status engine is currently disabled, enable it by set SecStatusEngine to On.
+2024-01-31T21:44:58.994944400Z AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.129.3.229. Set the 'ServerName' directive globally to suppress this message
+2024-01-31T21:44:59.046419329Z [Wed Jan 31 21:44:59.046337 2024] [ssl:warn] [pid 1] AH01909: 10.129.3.229:8443:0 server certificate does NOT include an ID which matches the server name
+2024-01-31T21:44:59.046514429Z [Wed Jan 31 21:44:59.046476 2024] [http2:warn] [pid 1] AH10034: The mpm module (prefork.c) is not supported by mod_http2. The mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected mpm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+2024-01-31T21:44:59.047054095Z [Wed Jan 31 21:44:59.047017 2024] [lbmethod_heartbeat:notice] [pid 1] AH02282: No slotmem from mod_heartmonitor
+2024-01-31T21:44:59.051632193Z [Wed Jan 31 21:44:59.051558 2024] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.34 (Red Hat) OpenSSL/1.0.2k-fips configured -- resuming normal operations
+2024-01-31T21:44:59.051632193Z [Wed Jan 31 21:44:59.051582 2024] [core:notice] [pid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+2024-01-31T21:46:54.355301515Z 10.129.3.231 - - [31/Jan/2024:21:46:54 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-02-01T21:43:52.897352148Z 10.129.3.246 - - [01/Feb/2024:21:43:52 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-02-01T21:59:29.031933557Z 10.129.3.249 - - [01/Feb/2024:21:59:29 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-02-13T17:24:52.509897121Z 10.129.2.186 - - [13/Feb/2024:17:24:52 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:05:36.201850791Z 10.129.3.54 - - [12/Mar/2024:03:05:36 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:05:39.422621318Z 10.129.3.56 - - [12/Mar/2024:03:05:39 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:06:44.172121611Z 10.129.3.57 - - [12/Mar/2024:03:06:44 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:08:34.006888397Z 10.129.3.58 - - [12/Mar/2024:03:08:33 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:09:38.427699328Z 10.129.3.59 - - [12/Mar/2024:03:09:38 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T03:14:00.179766293Z 10.129.3.61 - - [12/Mar/2024:03:14:00 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-12T04:00:58.587325743Z 10.129.3.67 - - [12/Mar/2024:04:00:58 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"
+2024-03-28T20:13:56.470748147Z 10.129.2.193 - - [28/Mar/2024:20:13:56 +0000] "GET /clh-theme-latest.jar HTTP/1.1" 200 33542753 "-" "curl/7.61.1"

@@ -1,0 +1,398 @@
+---
+apiVersion: discovery.k8s.io/v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.129.2.193
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    targetRef:
+      kind: Pod
+      name: keycloak-0
+      namespace: sso-noprod
+      uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+    zone: southamerica-west1-b
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2024-03-28T20:14:55Z"
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generateName: keycloak-discovery-
+    generation: 47
+    labels:
+      app: keycloak
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: keycloak-discovery
+      service.kubernetes.io/headless: ""
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+            f:service.kubernetes.io/headless: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"f641bf80-5197-4df1-a22b-a3db1b3d71a3"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:14:55Z"
+    name: keycloak-discovery-29vv7
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: keycloak-discovery
+      uid: f641bf80-5197-4df1-a22b-a3db1b3d71a3
+    resourceVersion: "152565234"
+    uid: fa2c4709-cee3-4694-90df-a36e071f826e
+  ports:
+  - name: ""
+    port: 8080
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.129.2.193
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    targetRef:
+      kind: Pod
+      name: keycloak-0
+      namespace: sso-noprod
+      uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+    zone: southamerica-west1-b
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2024-03-28T20:14:55Z"
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generateName: keycloak-monitoring-
+    generation: 47
+    labels:
+      app: keycloak
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: keycloak-monitoring
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"3dd72652-fec9-4e74-ae38-33a6a5d7aa33"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:14:55Z"
+    name: keycloak-monitoring-52hgf
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: keycloak-monitoring
+      uid: 3dd72652-fec9-4e74-ae38-33a6a5d7aa33
+    resourceVersion: "152565233"
+    uid: 49c45939-be3e-4963-8e59-1a71493e3314
+  ports:
+  - name: keycloak-monitoring
+    port: 9990
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.128.3.114
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-c-cq667
+    targetRef:
+      kind: Pod
+      name: keycloak-postgresql-7cc5fbb446-zz5r8
+      namespace: sso-noprod
+      uid: 74c794ae-668f-4ba3-8521-86e6b69c9fa3
+    zone: southamerica-west1-c
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2024-01-31T21:47:05Z"
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generateName: keycloak-postgresql-
+    generation: 3
+    labels:
+      app: keycloak
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: keycloak-postgresql
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"2599f09a-9cbd-48ff-bec1-dcb004f0936b"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-01-31T21:47:05Z"
+    name: keycloak-postgresql-tsjwp
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: keycloak-postgresql
+      uid: 2599f09a-9cbd-48ff-bec1-dcb004f0936b
+    resourceVersion: "51040595"
+    uid: e412b7a8-db17-4b7b-a56e-86eb368f3fd6
+  ports:
+  - name: ""
+    port: 5432
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.129.2.193
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    targetRef:
+      kind: Pod
+      name: keycloak-0
+      namespace: sso-noprod
+      uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+    zone: southamerica-west1-b
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2024-03-28T20:14:55Z"
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generateName: keycloak-
+    generation: 47
+    labels:
+      app: keycloak
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: keycloak
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"74ae055b-19be-4e6f-952e-5a84265c1323"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:14:55Z"
+    name: keycloak-prwln
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: keycloak
+      uid: 74ae055b-19be-4e6f-952e-5a84265c1323
+    resourceVersion: "152565232"
+    uid: f64220c0-69f8-4d36-9ef3-4774d4a65caf
+  ports:
+  - name: keycloak
+    port: 8443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.129.2.183
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    targetRef:
+      kind: Pod
+      name: rhsso-operator-598cdcbf97-4lr2b
+      namespace: sso-noprod
+      uid: 12c8ff7c-8c33-4655-994b-7194ca902150
+    zone: southamerica-west1-b
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2024-01-31T21:46:39Z"
+    generateName: rhsso-operator-metrics-
+    generation: 7
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: rhsso-operator-metrics
+      monitoring-key: middleware
+      name: rhsso-operator
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+            f:monitoring-key: {}
+            f:name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"521723c2-3819-4f3d-968a-dac4bef4ca17"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-02-13T17:24:25Z"
+    name: rhsso-operator-metrics-f6446
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: rhsso-operator-metrics
+      uid: 521723c2-3819-4f3d-968a-dac4bef4ca17
+    resourceVersion: "76904186"
+    uid: ab27658f-2c29-4f7d-8854-5b337e64300d
+  ports:
+  - name: cr-metrics
+    port: 8686
+    protocol: TCP
+  - name: http-metrics
+    port: 8383
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.129.3.229
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    targetRef:
+      kind: Pod
+      name: sso-theme-httpd-6987d869c7-zzw7n
+      namespace: sso-noprod
+      uid: 5997fd29-d96e-4488-92a8-94ff6bfd7c76
+    zone: southamerica-west1-b
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2024-01-31T21:44:59Z"
+    creationTimestamp: "2024-01-31T21:44:39Z"
+    generateName: sso-theme-httpd-svc-
+    generation: 3
+    labels:
+      app.kubernetes.io/instance: sso-theme-httpd-gcp-ocp-noprod
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: sso-theme-httpd-svc
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/instance: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"2ac06202-c455-48c3-a834-c21e56535f66"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-01-31T21:44:59Z"
+    name: sso-theme-httpd-svc-d8l66
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: sso-theme-httpd-svc
+      uid: 2ac06202-c455-48c3-a834-c21e56535f66
+    resourceVersion: "51038206"
+    uid: 09eb7682-82ad-4ed0-98de-054d24502b88
+  ports:
+  - name: ""
+    port: 8080
+    protocol: TCP
+kind: EndpointSliceList
+metadata:
+  resourceVersion: "152573839"

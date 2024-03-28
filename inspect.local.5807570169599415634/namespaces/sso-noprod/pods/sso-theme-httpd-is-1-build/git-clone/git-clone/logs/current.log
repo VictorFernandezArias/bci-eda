@@ -1,0 +1,5 @@
+2024-01-31T21:44:41.417798714Z Adding cluster TLS certificate authority to trust store
+2024-01-31T21:44:42.243005934Z Cloning "https://github.com/sclorg/httpd-ex.git" ...
+2024-01-31T21:44:43.813653376Z 	Commit:	42ab6a94e92ca6d37ed95bf8e36a9832245808b4 (Merge pull request #45 from sclorg/fix_selector)
+2024-01-31T21:44:43.813653376Z 	Author:	Petr Hracek <phracek@redhat.com>
+2024-01-31T21:44:43.813653376Z 	Date:	Tue Jan 9 15:52:19 2024 +0100

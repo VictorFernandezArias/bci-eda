@@ -1,0 +1,642 @@
+---
+apiVersion: v1
+items:
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:51Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{keycloak}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "123855424"
+    uid: a76a57e0-962e-47c9-96f3-8187fc6fc7b8
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:51Z"
+  message: Stopping container keycloak
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:51Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:51Z"
+    name: keycloak-0.17c106d1d66df1d8
+    namespace: sso-noprod
+    resourceVersion: "152564003"
+    uid: e895d6ae-47f6-434c-801d-fcf8545734fa
+  reason: Killing
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- action: Binding
+  apiVersion: v1
+  eventTime: "2024-03-28T20:13:54.233288Z"
+  firstTimestamp: null
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564061"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: null
+  message: Successfully assigned sso-noprod/keycloak-0 to gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:54Z"
+    managedFields:
+    - apiVersion: events.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:action: {}
+        f:eventTime: {}
+        f:note: {}
+        f:reason: {}
+        f:regarding: {}
+        f:reportingController: {}
+        f:reportingInstance: {}
+        f:type: {}
+      manager: kube-scheduler
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak-0.17c106d26dd8634b
+    namespace: sso-noprod
+    resourceVersion: "152564067"
+    uid: 55eb781d-3aac-4452-9d53-a080fd4bbebd
+  reason: Scheduled
+  reportingComponent: default-scheduler
+  reportingInstance: default-scheduler-gcp-ocp-noprod-xtlzt-master-0
+  source: {}
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:54Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564069"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:54Z"
+  message: Add eth0 [10.129.2.193/23] from ovn-kubernetes
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:54Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:source:
+          f:component: {}
+        f:type: {}
+      manager: multus-daemon
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak-0.17c106d29503e427
+    namespace: sso-noprod
+    resourceVersion: "152564082"
+    uid: 3af0051c-baa6-4505-9e5f-b0d28d931efa
+  reason: AddedInterface
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: multus
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:54Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{extensions-init}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:54Z"
+  message: Pulling image "registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103"
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:54Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak-0.17c106d296a05a5a
+    namespace: sso-noprod
+    resourceVersion: "152564084"
+    uid: 27fbb43a-c06b-40d4-a805-35a7bb6982c7
+  reason: Pulling
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:55Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{extensions-init}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:55Z"
+  message: Successfully pulled image "registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103"
+    in 927.354241ms (927.370705ms including waiting)
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:55Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:55Z"
+    name: keycloak-0.17c106d2cde73bbb
+    namespace: sso-noprod
+    resourceVersion: "152564097"
+    uid: 51810d75-3761-40f3-a6d9-af32d105269a
+  reason: Pulled
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:55Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{extensions-init}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:55Z"
+  message: Created container extensions-init
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:55Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:55Z"
+    name: keycloak-0.17c106d2d62faca8
+    namespace: sso-noprod
+    resourceVersion: "152564101"
+    uid: 9960951d-a69e-4f72-82f4-264e5f0845e0
+  reason: Created
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:56Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{extensions-init}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:56Z"
+  message: Started container extensions-init
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:56Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:56Z"
+    name: keycloak-0.17c106d2d74b5699
+    namespace: sso-noprod
+    resourceVersion: "152564103"
+    uid: 47ee0331-7b5a-478e-9a3f-6e25c7ef6633
+  reason: Started
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:57Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{keycloak}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:57Z"
+  message: Pulling image "registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce"
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:57Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:57Z"
+    name: keycloak-0.17c106d3201656dd
+    namespace: sso-noprod
+    resourceVersion: "152564138"
+    uid: 2da47ad5-181c-40aa-bd42-f726dee9e629
+  reason: Pulling
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:58Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{keycloak}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:58Z"
+  message: Successfully pulled image "registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce"
+    in 811.819865ms (811.828497ms including waiting)
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:58Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:58Z"
+    name: keycloak-0.17c106d3507a1a94
+    namespace: sso-noprod
+    resourceVersion: "152564166"
+    uid: ac2f25a4-0603-4496-84bd-8ad9385d39c8
+  reason: Pulled
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:58Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{keycloak}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:58Z"
+  message: Created container keycloak
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:58Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:58Z"
+    name: keycloak-0.17c106d358c211fc
+    namespace: sso-noprod
+    resourceVersion: "152564169"
+    uid: 6b2a4ccb-d87d-4076-9168-a43a487dfe45
+  reason: Created
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 1
+  eventTime: null
+  firstTimestamp: "2024-03-28T20:13:58Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{keycloak}
+    kind: Pod
+    name: keycloak-0
+    namespace: sso-noprod
+    resourceVersion: "152564063"
+    uid: b1f6e720-a4a7-4003-bff2-937b6e652e15
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:58Z"
+  message: Started container keycloak
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:58Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:reportingInstance: {}
+        f:source:
+          f:component: {}
+          f:host: {}
+        f:type: {}
+      manager: kubelet
+      operation: Update
+      time: "2024-03-28T20:13:58Z"
+    name: keycloak-0.17c106d359d185a6
+    namespace: sso-noprod
+    resourceVersion: "152564170"
+    uid: 77669658-3887-4afd-8078-6f37d29ab576
+  reason: Started
+  reportingComponent: kubelet
+  reportingInstance: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  source:
+    component: kubelet
+    host: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  type: Normal
+- apiVersion: v1
+  count: 62
+  eventTime: null
+  firstTimestamp: "2024-02-13T17:24:35Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: keycloak
+    namespace: sso-noprod
+    resourceVersion: "152564004"
+    uid: 3acd5e88-ab2d-4fcb-8951-5140f5fe3f35
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:54Z"
+  message: delete Pod keycloak-0 in StatefulSet keycloak successful
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:53Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:source:
+          f:component: {}
+        f:type: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak.17b37c0c199d306c
+    namespace: sso-noprod
+    resourceVersion: "152564062"
+    uid: 4f3a88ae-f733-4d41-afc7-dd857b93b46d
+  reason: SuccessfulDelete
+  reportingComponent: statefulset-controller
+  reportingInstance: ""
+  source:
+    component: statefulset-controller
+  type: Normal
+- apiVersion: v1
+  count: 9
+  eventTime: null
+  firstTimestamp: "2024-02-13T17:24:40Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: keycloak
+    namespace: sso-noprod
+    resourceVersion: "152564044"
+    uid: 3acd5e88-ab2d-4fcb-8951-5140f5fe3f35
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:54Z"
+  message: create Pod keycloak-0 in StatefulSet keycloak successful
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:54Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:source:
+          f:component: {}
+        f:type: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak.17b37c0d3f7867b4
+    namespace: sso-noprod
+    resourceVersion: "152564064"
+    uid: 55f04ec3-7935-40b4-a667-fa81220ad6b1
+  reason: SuccessfulCreate
+  reportingComponent: statefulset-controller
+  reportingInstance: ""
+  source:
+    component: statefulset-controller
+  type: Normal
+- apiVersion: v1
+  count: 55
+  eventTime: null
+  firstTimestamp: "2024-03-12T03:05:33Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: keycloak
+    namespace: sso-noprod
+    resourceVersion: "152564004"
+    uid: 3acd5e88-ab2d-4fcb-8951-5140f5fe3f35
+  kind: Event
+  lastTimestamp: "2024-03-28T20:13:54Z"
+  message: StatefulSet sso-noprod/keycloak is recreating failed Pod keycloak-0
+  metadata:
+    creationTimestamp: "2024-03-28T20:13:53Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:reportingComponent: {}
+        f:source:
+          f:component: {}
+        f:type: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-03-28T20:13:54Z"
+    name: keycloak.17bbe56b90755639
+    namespace: sso-noprod
+    resourceVersion: "152564059"
+    uid: 3be93581-5703-4d5f-bb2c-89c005c27914
+  reason: RecreatingFailedPod
+  reportingComponent: statefulset-controller
+  reportingInstance: ""
+  source:
+    component: statefulset-controller
+  type: Warning
+kind: EventList
+metadata:
+  resourceVersion: "152573836"

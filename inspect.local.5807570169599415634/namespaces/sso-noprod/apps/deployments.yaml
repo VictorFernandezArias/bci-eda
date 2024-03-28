@@ -1,0 +1,851 @@
+---
+apiVersion: apps/v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generation: 1
+    labels:
+      app: keycloak
+      component: database
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+            f:component: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"3f95cbd7-aa83-4561-add8-26cba88d49b8"}: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+                f:component: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:containers:
+                k:{"name":"keycloak-postgresql"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"POSTGRESQL_DATABASE"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"POSTGRESQL_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                    k:{"name":"POSTGRESQL_USER"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:tcpSocket:
+                      .: {}
+                      f:port: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":5432,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:exec:
+                      .: {}
+                      f:command: {}
+                    f:failureThreshold: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/lib/pgsql/data"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+              f:volumes:
+                .: {}
+                k:{"name":"keycloak-postgresql-claim"}:
+                  .: {}
+                  f:name: {}
+                  f:persistentVolumeClaim:
+                    .: {}
+                    f:claimName: {}
+      manager: keycloak-operator
+      operation: Update
+      time: "2024-01-31T21:46:52Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            k:{"type":"Available"}:
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+            k:{"type":"Progressing"}:
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+          f:readyReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-01-31T21:47:05Z"
+    name: keycloak-postgresql
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: keycloak.org/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Keycloak
+      name: keycloak
+      uid: 3f95cbd7-aa83-4561-add8-26cba88d49b8
+    resourceVersion: "51040629"
+    uid: 0aa361e1-47c0-4fc7-b226-5f6abf3e712b
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: keycloak
+        component: database
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: keycloak
+          component: database
+        name: keycloak-postgresql
+        namespace: sso-noprod
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_USERNAME
+                name: keycloak-db-secret
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: keycloak-db-secret
+          - name: POSTGRESQL_DATABASE
+            value: root
+          image: registry.redhat.io/rhscl/postgresql-10-rhel7:1-173
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 5432
+            timeoutSeconds: 1
+          name: keycloak-postgresql
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c
+                'SELECT 1'
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/pgsql/data
+            name: keycloak-postgresql-claim
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: keycloak-postgresql-claim
+          persistentVolumeClaim:
+            claimName: keycloak-postgresql-claim
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2024-01-31T21:47:05Z"
+      lastUpdateTime: "2024-01-31T21:47:05Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2024-01-31T21:46:52Z"
+      lastUpdateTime: "2024-01-31T21:47:05Z"
+      message: ReplicaSet "keycloak-postgresql-7cc5fbb446" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "3"
+    creationTimestamp: "2024-01-31T21:45:27Z"
+    generation: 5
+    labels:
+      olm.deployment-spec-hash: 7fc56d5698
+      olm.owner: rhsso-operator.7.6.7-opr-001
+      olm.owner.kind: ClusterServiceVersion
+      olm.owner.namespace: sso-noprod
+      operators.coreos.com/rhsso-operator.sso-noprod: ""
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:olm.deployment-spec-hash: {}
+            f:olm.owner: {}
+            f:olm.owner.kind: {}
+            f:olm.owner.namespace: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"577923b9-8d1c-49c3-9153-00e337935e08"}: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:alm-examples: {}
+                f:capabilities: {}
+                f:categories: {}
+                f:certified: {}
+                f:containerImage: {}
+                f:createdAt: {}
+                f:description: {}
+                f:olm.operatorGroup: {}
+                f:olm.operatorNamespace: {}
+                f:olm.targetNamespaces: {}
+                f:operatorframework.io/properties: {}
+                f:operators.openshift.io/valid-subscription: {}
+                f:repository: {}
+                f:support: {}
+              f:labels:
+                .: {}
+                f:name: {}
+            f:spec:
+              f:containers:
+                k:{"name":"rhsso-operator"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"OPERATOR_CONDITION_NAME"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"OPERATOR_NAME"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"POD_NAME"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:fieldRef: {}
+                    k:{"name":"PROFILE"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"RELATED_IMAGE_KEYCLOAK_INIT_CONTAINER"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"RELATED_IMAGE_RHSSO_INIT_CONTAINER"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"RELATED_IMAGE_RHSSO_OPENJ9"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"RELATED_IMAGE_RHSSO_OPENJDK"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"SSO_QUARTER"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"SSO_VER"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"WATCH_NAMESPACE"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:fieldRef: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: olm
+      operation: Update
+      time: "2024-02-13T17:22:49Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            f:operators.coreos.com/rhsso-operator.sso-noprod: {}
+      manager: Go-http-client
+      operation: Update
+      time: "2024-02-13T17:22:53Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2024-02-13T17:23:17Z"
+    name: rhsso-operator
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: operators.coreos.com/v1alpha1
+      blockOwnerDeletion: false
+      controller: false
+      kind: ClusterServiceVersion
+      name: rhsso-operator.7.6.7-opr-001
+      uid: 577923b9-8d1c-49c3-9153-00e337935e08
+    resourceVersion: "76902475"
+    uid: e0d4ec75-b189-45b7-b30e-970f1a88f5d9
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 1
+    selector:
+      matchLabels:
+        name: rhsso-operator
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          alm-examples: |-
+            [
+              {
+                "apiVersion": "keycloak.org/v1alpha1",
+                "kind": "Keycloak",
+                "metadata": {
+                  "name": "example-keycloak",
+                  "labels": {
+                    "app": "sso"
+                  }
+                },
+                "spec": {
+                  "instances": 1,
+                  "externalAccess": {
+                    "enabled": true
+                  }
+                }
+              },
+              {
+                "apiVersion": "keycloak.org/v1alpha1",
+                "kind": "KeycloakRealm",
+                "metadata": {
+                  "name": "example-keycloakrealm"
+                },
+                "spec": {
+                  "realm": {
+                    "id": "basic",
+                    "realm": "basic",
+                    "enabled": true,
+                    "displayName": "Basic Realm"
+                  },
+                  "instanceSelector": {
+                    "matchLabels": {
+                      "app": "sso"
+                    }
+                  }
+                }
+              },
+              {
+                "apiVersion": "keycloak.org/v1alpha1",
+                "kind": "KeycloakBackup",
+                "metadata": {
+                  "name": "example-keycloakbackup"
+                },
+                "spec": {
+                  "instanceSelector": {
+                    "matchLabels": {
+                      "app": "sso"
+                    }
+                  }
+                }
+              },
+              {
+                "apiVersion": "keycloak.org/v1alpha1",
+                "kind": "KeycloakClient",
+                "metadata": {
+                  "name": "client-secret",
+                  "labels": {
+                    "app": "sso"
+                  }
+                },
+                "spec": {
+                  "realmSelector": {
+                    "matchLabels": {
+                      "app": "sso"
+                    }
+                  },
+                  "client": {
+                    "clientId": "client-secret",
+                    "secret": "client-secret",
+                    "clientAuthenticatorType": "client-secret"
+                  }
+                }
+              },
+              {
+                "apiVersion": "keycloak.org/v1alpha1",
+                "kind": "KeycloakUser",
+                "metadata": {
+                  "name": "example-realm-user",
+                  "labels": {
+                    "app": "sso"
+                  }
+                },
+                "spec": {
+                  "user": {
+                    "username": "realm_user",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "user@example.com",
+                    "enabled": true,
+                    "emailVerified": false
+                  },
+                  "realmSelector": {
+                    "matchLabels": {
+                      "app": "sso"
+                    }
+                  }
+                }
+              }
+            ]
+          capabilities: Full Lifecycle
+          categories: Security
+          certified: "False"
+          containerImage: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+          createdAt: "2021-08-09 00:00:00"
+          description: An Operator for installing and managing Red Hat Single Sign-On
+          olm.operatorGroup: rhsso
+          olm.operatorNamespace: sso-noprod
+          olm.targetNamespaces: sso-noprod
+          operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"Keycloak","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakBackup","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakClient","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakRealm","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakUser","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"rhsso-operator","version":"7.6.7-opr-001"}}]}'
+          operators.openshift.io/valid-subscription: '["OpenShift Container Platform",
+            "OpenShift Platform Plus"]'
+          repository: https://github.com/keycloak/keycloak-operator
+          support: Red Hat
+        creationTimestamp: null
+        labels:
+          name: rhsso-operator
+      spec:
+        containers:
+        - env:
+          - name: WATCH_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.annotations['olm.targetNamespaces']
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: PROFILE
+            value: RHSSO
+          - name: OPERATOR_NAME
+            value: rhsso-operator
+          - name: SSO_QUARTER
+            value: 2024_Q1
+          - name: SSO_VER
+            value: 7.6.7
+          - name: RELATED_IMAGE_RHSSO_OPENJDK
+            value: registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce
+          - name: RELATED_IMAGE_RHSSO_OPENJ9
+            value: registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce
+          - name: RELATED_IMAGE_KEYCLOAK_INIT_CONTAINER
+            value: registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103
+          - name: RELATED_IMAGE_RHSSO_INIT_CONTAINER
+            value: registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103
+          - name: OPERATOR_CONDITION_NAME
+            value: rhsso-operator.7.6.7-opr-001
+          image: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+          imagePullPolicy: Always
+          name: rhsso-operator
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: rhsso-operator
+        serviceAccountName: rhsso-operator
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2024-01-31T21:45:30Z"
+      lastUpdateTime: "2024-01-31T21:45:30Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2024-01-31T21:45:27Z"
+      lastUpdateTime: "2024-02-13T17:23:17Z"
+      message: ReplicaSet "rhsso-operator-598cdcbf97" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 5
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"sso-theme-httpd","app.kubernetes.io/component":"sso-theme-httpd","app.kubernetes.io/instance":"sso-theme-httpd-gcp-ocp-noprod","app.kubernetes.io/name":"sso-theme-httpd","app.kubernetes.io/part-of":"sso-theme-httpd","app.openshift.io/runtime":"httpd","app.openshift.io/runtime-version":"2.4-el7"},"name":"sso-theme-httpd","namespace":"sso-noprod"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"sso-theme-httpd"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"sso-theme-httpd","deployment":"sso-theme-httpd"}},"spec":{"containers":[{"image":"image-registry.openshift-image-registry.svc:5000/sso-noprod/httpd:latest","imagePullPolicy":"Always","name":"sso-theme-httpd","ports":[{"containerPort":8080,"protocol":"TCP"},{"containerPort":8443,"protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/opt/app-root/src/","name":"v1"}]}],"dnsPolicy":"ClusterFirst","initContainers":[{"command":["/bin/sh","-c","cd /opt; git clone ${repo_url//https\\:\\/\\//https\\:\\/\\/$token\\@} repo; cp -f repo/target/*.jar clh-theme-latest.jar; rm -rf repo"],"envFrom":[{"secretRef":{"name":"sso-theme-httpd-secret"}}],"image":"image-registry.openshift-image-registry.svc:5000/openshift/tools:latest","name":"ocp-tools","volumeMounts":[{"mountPath":"/opt","name":"v1"}]}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"name":"v1","persistentVolumeClaim":{"claimName":"sso-theme-httpd-pvc"}}]}}}}
+    creationTimestamp: "2024-01-31T21:44:39Z"
+    generation: 1
+    labels:
+      app: sso-theme-httpd
+      app.kubernetes.io/component: sso-theme-httpd
+      app.kubernetes.io/instance: sso-theme-httpd-gcp-ocp-noprod
+      app.kubernetes.io/name: sso-theme-httpd
+      app.kubernetes.io/part-of: sso-theme-httpd
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/part-of: {}
+            f:app.openshift.io/runtime: {}
+            f:app.openshift.io/runtime-version: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+                f:deployment: {}
+            f:spec:
+              f:containers:
+                k:{"name":"sso-theme-httpd"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8080,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                    k:{"containerPort":8443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/opt/app-root/src/"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:initContainers:
+                .: {}
+                k:{"name":"ocp-tools"}:
+                  .: {}
+                  f:command: {}
+                  f:envFrom: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/opt"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+              f:volumes:
+                .: {}
+                k:{"name":"v1"}:
+                  .: {}
+                  f:name: {}
+                  f:persistentVolumeClaim:
+                    .: {}
+                    f:claimName: {}
+      manager: argocd-controller
+      operation: Update
+      time: "2024-01-31T21:44:39Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2024-01-31T21:44:59Z"
+    name: sso-theme-httpd
+    namespace: sso-noprod
+    resourceVersion: "51038210"
+    uid: 3b77ca68-0595-4be0-a4af-4b75c4edf43d
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: sso-theme-httpd
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: sso-theme-httpd
+          deployment: sso-theme-httpd
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/sso-noprod/httpd:latest
+          imagePullPolicy: Always
+          name: sso-theme-httpd
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          - containerPort: 8443
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/app-root/src/
+            name: v1
+        dnsPolicy: ClusterFirst
+        initContainers:
+        - command:
+          - /bin/sh
+          - -c
+          - cd /opt; git clone ${repo_url//https\:\/\//https\:\/\/$token\@} repo;
+            cp -f repo/target/*.jar clh-theme-latest.jar; rm -rf repo
+          envFrom:
+          - secretRef:
+              name: sso-theme-httpd-secret
+          image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+          imagePullPolicy: Always
+          name: ocp-tools
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt
+            name: v1
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: v1
+          persistentVolumeClaim:
+            claimName: sso-theme-httpd-pvc
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2024-01-31T21:44:59Z"
+      lastUpdateTime: "2024-01-31T21:44:59Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2024-01-31T21:44:39Z"
+      lastUpdateTime: "2024-01-31T21:44:59Z"
+      message: ReplicaSet "sso-theme-httpd-6987d869c7" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: DeploymentList
+metadata:
+  resourceVersion: "152573820"

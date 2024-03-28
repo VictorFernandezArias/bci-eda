@@ -1,0 +1,208 @@
+---
+apiVersion: build.openshift.io/v1
+items:
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: sso-theme-httpd-is
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: sso-theme-httpd-is-1-build
+    creationTimestamp: "2024-01-31T21:44:40Z"
+    generation: 2
+    labels:
+      app: httpd
+      app.kubernetes.io/component: httpd
+      app.kubernetes.io/instance: sso-theme-httpd-gcp-ocp-noprod
+      app.kubernetes.io/name: httpd
+      app.kubernetes.io/part-of: httpd
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+      buildconfig: sso-theme-httpd-is
+      openshift.io/build-config.name: sso-theme-httpd-is
+      openshift.io/build.start-policy: Serial
+    managedFields:
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/build-config.name: {}
+            f:openshift.io/build.number: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/part-of: {}
+            f:app.openshift.io/runtime: {}
+            f:app.openshift.io/runtime-version: {}
+            f:buildconfig: {}
+            f:openshift.io/build-config.name: {}
+            f:openshift.io/build.start-policy: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"35a6c4e8-a222-44fb-8ba0-004ee94b5406"}: {}
+        f:spec:
+          f:output:
+            f:to: {}
+          f:serviceAccount: {}
+          f:source:
+            f:git:
+              .: {}
+              f:uri: {}
+            f:type: {}
+          f:strategy:
+            f:sourceStrategy:
+              .: {}
+              f:from: {}
+              f:pullSecret: {}
+            f:type: {}
+          f:triggeredBy: {}
+        f:status:
+          f:conditions:
+            .: {}
+            k:{"type":"New"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:status: {}
+              f:type: {}
+          f:config: {}
+      manager: openshift-apiserver
+      operation: Update
+      time: "2024-01-31T21:44:40Z"
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:openshift.io/build.pod-name: {}
+        f:spec:
+          f:output:
+            f:pushSecret: {}
+        f:status:
+          f:completionTimestamp: {}
+          f:duration: {}
+          f:outputDockerImageReference: {}
+          f:phase: {}
+          f:startTimestamp: {}
+      manager: openshift-controller-manager
+      operation: Update
+      time: "2024-01-31T21:44:58Z"
+    name: sso-theme-httpd-is-1
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: sso-theme-httpd-is
+      uid: 35a6c4e8-a222-44fb-8ba0-004ee94b5406
+    resourceVersion: "51038184"
+    uid: fdf11659-bede-49bb-9e87-e4586be2cbf0
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-744qs
+      to:
+        kind: ImageStreamTag
+        name: httpd:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: phracek@redhat.com
+          name: Petr Hracek
+        commit: 42ab6a94e92ca6d37ed95bf8e36a9832245808b4
+        committer:
+          email: noreply@github.com
+          name: GitHub
+        message: 'Merge pull request #45 from sclorg/fix_selector'
+      type: Git
+    serviceAccount: builder
+    source:
+      git:
+        uri: https://github.com/sclorg/httpd-ex.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:f31696f37cc7d4359529d71c862bf62d98ca47fa0cc2211e7f451ca026060b38
+        pullSecret:
+          name: builder-dockercfg-744qs
+      type: Source
+    triggeredBy:
+    - imageChangeBuild:
+        fromRef:
+          kind: ImageStreamTag
+          name: httpd:2.4-el7
+          namespace: openshift
+        imageID: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:f31696f37cc7d4359529d71c862bf62d98ca47fa0cc2211e7f451ca026060b38
+      message: Image change
+  status:
+    completionTimestamp: "2024-01-31T21:44:58Z"
+    conditions:
+    - lastTransitionTime: "2024-01-31T21:44:40Z"
+      lastUpdateTime: "2024-01-31T21:44:40Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2024-01-31T21:44:41Z"
+      lastUpdateTime: "2024-01-31T21:44:41Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2024-01-31T21:44:58Z"
+      lastUpdateTime: "2024-01-31T21:44:58Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2024-01-31T21:44:58Z"
+      lastUpdateTime: "2024-01-31T21:44:58Z"
+      status: "True"
+      type: Complete
+    config:
+      kind: BuildConfig
+      name: sso-theme-httpd-is
+      namespace: sso-noprod
+    duration: 18000000000
+    output:
+      to:
+        imageDigest: sha256:341d46b35d2794c02f90fe9d5cc89f2a6d932ecd7210ef081c12ed1066600aff
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/sso-noprod/httpd:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 897
+      name: FetchInputs
+      startTime: "2024-01-31T21:44:42Z"
+      steps:
+      - durationMilliseconds: 897
+        name: FetchGitSource
+        startTime: "2024-01-31T21:44:42Z"
+    - durationMilliseconds: 5221
+      name: PullImages
+      startTime: "2024-01-31T21:44:46Z"
+      steps:
+      - durationMilliseconds: 5221
+        name: PullBaseImage
+        startTime: "2024-01-31T21:44:46Z"
+    - durationMilliseconds: 2176
+      name: Build
+      startTime: "2024-01-31T21:44:52Z"
+      steps:
+      - durationMilliseconds: 2176
+        name: DockerBuild
+        startTime: "2024-01-31T21:44:52Z"
+    - durationMilliseconds: 2465
+      name: PushImage
+      startTime: "2024-01-31T21:44:54Z"
+      steps:
+      - durationMilliseconds: 2465
+        name: PushImage
+        startTime: "2024-01-31T21:44:54Z"
+    startTimestamp: "2024-01-31T21:44:40Z"
+kind: BuildList
+metadata:
+  resourceVersion: "152573823"

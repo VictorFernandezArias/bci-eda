@@ -1,0 +1,442 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "keycloak.org/v1alpha1",
+          "kind": "Keycloak",
+          "metadata": {
+            "name": "example-keycloak",
+            "labels": {
+              "app": "sso"
+            }
+          },
+          "spec": {
+            "instances": 1,
+            "externalAccess": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "apiVersion": "keycloak.org/v1alpha1",
+          "kind": "KeycloakRealm",
+          "metadata": {
+            "name": "example-keycloakrealm"
+          },
+          "spec": {
+            "realm": {
+              "id": "basic",
+              "realm": "basic",
+              "enabled": true,
+              "displayName": "Basic Realm"
+            },
+            "instanceSelector": {
+              "matchLabels": {
+                "app": "sso"
+              }
+            }
+          }
+        },
+        {
+          "apiVersion": "keycloak.org/v1alpha1",
+          "kind": "KeycloakBackup",
+          "metadata": {
+            "name": "example-keycloakbackup"
+          },
+          "spec": {
+            "instanceSelector": {
+              "matchLabels": {
+                "app": "sso"
+              }
+            }
+          }
+        },
+        {
+          "apiVersion": "keycloak.org/v1alpha1",
+          "kind": "KeycloakClient",
+          "metadata": {
+            "name": "client-secret",
+            "labels": {
+              "app": "sso"
+            }
+          },
+          "spec": {
+            "realmSelector": {
+              "matchLabels": {
+                "app": "sso"
+              }
+            },
+            "client": {
+              "clientId": "client-secret",
+              "secret": "client-secret",
+              "clientAuthenticatorType": "client-secret"
+            }
+          }
+        },
+        {
+          "apiVersion": "keycloak.org/v1alpha1",
+          "kind": "KeycloakUser",
+          "metadata": {
+            "name": "example-realm-user",
+            "labels": {
+              "app": "sso"
+            }
+          },
+          "spec": {
+            "user": {
+              "username": "realm_user",
+              "firstName": "John",
+              "lastName": "Doe",
+              "email": "user@example.com",
+              "enabled": true,
+              "emailVerified": false
+            },
+            "realmSelector": {
+              "matchLabels": {
+                "app": "sso"
+              }
+            }
+          }
+        }
+      ]
+    capabilities: Full Lifecycle
+    categories: Security
+    certified: "False"
+    containerImage: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+    createdAt: "2021-08-09 00:00:00"
+    description: An Operator for installing and managing Red Hat Single Sign-On
+    k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.129.2.183/23"],"mac_address":"0a:58:0a:81:02:b7","gateway_ips":["10.129.2.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.129.2.1"},{"dest":"172.30.0.0/16","nextHop":"10.129.2.1"},{"dest":"100.64.0.0/16","nextHop":"10.129.2.1"}],"ip_address":"10.129.2.183/23","gateway_ip":"10.129.2.1"}}'
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "ovn-kubernetes",
+          "interface": "eth0",
+          "ips": [
+              "10.129.2.183"
+          ],
+          "mac": "0a:58:0a:81:02:b7",
+          "default": true,
+          "dns": {}
+      }]
+    olm.operatorGroup: rhsso
+    olm.operatorNamespace: sso-noprod
+    olm.targetNamespaces: sso-noprod
+    openshift.io/scc: restricted-v2
+    operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"Keycloak","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakBackup","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakClient","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakRealm","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"keycloak.org","kind":"KeycloakUser","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"rhsso-operator","version":"7.6.7-opr-001"}}]}'
+    operators.openshift.io/valid-subscription: '["OpenShift Container Platform", "OpenShift
+      Platform Plus"]'
+    repository: https://github.com/keycloak/keycloak-operator
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    support: Red Hat
+  creationTimestamp: "2024-02-13T17:22:50Z"
+  generateName: rhsso-operator-598cdcbf97-
+  labels:
+    name: rhsso-operator
+    pod-template-hash: 598cdcbf97
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:k8s.ovn.org/pod-networks: {}
+    manager: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+    operation: Update
+    subresource: status
+    time: "2024-02-13T17:22:50Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:alm-examples: {}
+          f:capabilities: {}
+          f:categories: {}
+          f:certified: {}
+          f:containerImage: {}
+          f:createdAt: {}
+          f:description: {}
+          f:olm.operatorGroup: {}
+          f:olm.operatorNamespace: {}
+          f:olm.targetNamespaces: {}
+          f:operatorframework.io/properties: {}
+          f:operators.openshift.io/valid-subscription: {}
+          f:repository: {}
+          f:support: {}
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:name: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"91bf2cfe-57e1-4dc3-83a5-ae6a80e8ed30"}: {}
+      f:spec:
+        f:containers:
+          k:{"name":"rhsso-operator"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"OPERATOR_CONDITION_NAME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"OPERATOR_NAME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"POD_NAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef: {}
+              k:{"name":"PROFILE"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"RELATED_IMAGE_KEYCLOAK_INIT_CONTAINER"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"RELATED_IMAGE_RHSSO_INIT_CONTAINER"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"RELATED_IMAGE_RHSSO_OPENJ9"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"RELATED_IMAGE_RHSSO_OPENJDK"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"SSO_QUARTER"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"SSO_VER"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"WATCH_NAMESPACE"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2024-02-13T17:22:50Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:k8s.v1.cni.cncf.io/network-status: {}
+    manager: multus-daemon
+    operation: Update
+    subresource: status
+    time: "2024-02-13T17:22:51Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.129.2.183"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    subresource: status
+    time: "2024-02-13T17:23:17Z"
+  name: rhsso-operator-598cdcbf97-4lr2b
+  namespace: sso-noprod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: rhsso-operator-598cdcbf97
+    uid: 91bf2cfe-57e1-4dc3-83a5-ae6a80e8ed30
+  resourceVersion: "76902446"
+  uid: 12c8ff7c-8c33-4655-994b-7194ca902150
+spec:
+  containers:
+  - env:
+    - name: WATCH_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.annotations['olm.targetNamespaces']
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: PROFILE
+      value: RHSSO
+    - name: OPERATOR_NAME
+      value: rhsso-operator
+    - name: SSO_QUARTER
+      value: 2024_Q1
+    - name: SSO_VER
+      value: 7.6.7
+    - name: RELATED_IMAGE_RHSSO_OPENJDK
+      value: registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce
+    - name: RELATED_IMAGE_RHSSO_OPENJ9
+      value: registry.redhat.io/rh-sso-7/sso76-openshift-rhel8@sha256:21033463e761a6ff142551fa93ec20196ad46f18b0dc4a0c692866d4410c64ce
+    - name: RELATED_IMAGE_KEYCLOAK_INIT_CONTAINER
+      value: registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103
+    - name: RELATED_IMAGE_RHSSO_INIT_CONTAINER
+      value: registry.redhat.io/rh-sso-7/sso7-rhel8-init-container@sha256:c9634cf64e2b0c3a7e8314b870dba12bb6a370b44545f9347ca577f7a5a13103
+    - name: OPERATOR_CONDITION_NAME
+      value: rhsso-operator.7.6.7-opr-001
+    image: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+    imagePullPolicy: Always
+    name: rhsso-operator
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      runAsNonRoot: true
+      runAsUser: 1000840000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-zbh6w
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  imagePullSecrets:
+  - name: rhsso-operator-dockercfg-9h8bp
+  nodeName: gcp-ocp-noprod-xtlzt-worker-b-6pj6r
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000840000
+    seLinuxOptions:
+      level: s0:c29,c14
+    seccompProfile:
+      type: RuntimeDefault
+  serviceAccount: rhsso-operator
+  serviceAccountName: rhsso-operator
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-zbh6w
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+      - configMap:
+          items:
+          - key: service-ca.crt
+            path: service-ca.crt
+          name: openshift-service-ca.crt
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-13T17:22:50Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-13T17:23:17Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-13T17:23:17Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-13T17:22:50Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://c5f358692c15815b2c2b16aeab65486ddfb6aec7e82c2191430ac3fb3aac8b9b
+    image: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+    imageID: registry.redhat.io/rh-sso-7/sso7-rhel8-operator@sha256:711f12fe68c345c8753b39f68ff0ba71f5c209b9a466ef98feffbcadb531b545
+    lastState: {}
+    name: rhsso-operator
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2024-02-13T17:23:17Z"
+  hostIP: 10.85.24.131
+  phase: Running
+  podIP: 10.129.2.183
+  podIPs:
+  - ip: 10.129.2.183
+  qosClass: BestEffort
+  startTime: "2024-02-13T17:22:50Z"

@@ -1,0 +1,106 @@
+---
+apiVersion: build.openshift.io/v1
+items:
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","metadata":{"annotations":{},"labels":{"app":"httpd","app.kubernetes.io/component":"httpd","app.kubernetes.io/instance":"sso-theme-httpd-gcp-ocp-noprod","app.kubernetes.io/name":"httpd","app.kubernetes.io/part-of":"httpd","app.openshift.io/runtime":"httpd","app.openshift.io/runtime-version":"2.4-el7"},"name":"sso-theme-httpd-is","namespace":"sso-noprod"},"spec":{"failedBuildsHistoryLimit":5,"nodeSelector":null,"output":{"to":{"kind":"ImageStreamTag","name":"httpd:latest"}},"postCommit":{},"resources":{},"runPolicy":"Serial","source":{"git":{"uri":"https://github.com/sclorg/httpd-ex.git"},"type":"Git"},"strategy":{"sourceStrategy":{"from":{"kind":"ImageStreamTag","name":"httpd:2.4-el7","namespace":"openshift"}},"type":"Source"},"successfulBuildsHistoryLimit":5,"triggers":[{"imageChange":{},"type":"ImageChange"},{"type":"ConfigChange"}]}}
+    creationTimestamp: "2024-01-31T21:44:40Z"
+    generation: 2
+    labels:
+      app: httpd
+      app.kubernetes.io/component: httpd
+      app.kubernetes.io/instance: sso-theme-httpd-gcp-ocp-noprod
+      app.kubernetes.io/name: httpd
+      app.kubernetes.io/part-of: httpd
+      app.openshift.io/runtime: httpd
+      app.openshift.io/runtime-version: 2.4-el7
+    managedFields:
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/part-of: {}
+            f:app.openshift.io/runtime: {}
+            f:app.openshift.io/runtime-version: {}
+        f:spec:
+          f:failedBuildsHistoryLimit: {}
+          f:output:
+            f:to: {}
+          f:runPolicy: {}
+          f:source:
+            f:git:
+              .: {}
+              f:uri: {}
+            f:type: {}
+          f:strategy:
+            f:sourceStrategy:
+              .: {}
+              f:from: {}
+            f:type: {}
+          f:successfulBuildsHistoryLimit: {}
+          f:triggers: {}
+      manager: argocd-controller
+      operation: Update
+      time: "2024-01-31T21:44:40Z"
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:imageChangeTriggers: {}
+          f:lastVersion: {}
+      manager: openshift-apiserver
+      operation: Update
+      time: "2024-01-31T21:44:40Z"
+    name: sso-theme-httpd-is
+    namespace: sso-noprod
+    resourceVersion: "51037883"
+    uid: 35a6c4e8-a222-44fb-8ba0-004ee94b5406
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: httpd:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        uri: https://github.com/sclorg/httpd-ex.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: httpd:2.4-el7
+          namespace: openshift
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - imageChange: {}
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    imageChangeTriggers:
+    - from:
+        name: httpd:2.4-el7
+        namespace: openshift
+      lastTriggerTime: "2024-01-31T21:44:40Z"
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:f31696f37cc7d4359529d71c862bf62d98ca47fa0cc2211e7f451ca026060b38
+    lastVersion: 1
+kind: BuildConfigList
+metadata:
+  resourceVersion: "152573821"

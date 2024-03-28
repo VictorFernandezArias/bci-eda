@@ -1,0 +1,120 @@
+---
+apiVersion: monitoring.coreos.com/v1
+items:
+- apiVersion: monitoring.coreos.com/v1
+  kind: ServiceMonitor
+  metadata:
+    creationTimestamp: "2024-01-31T21:46:52Z"
+    generation: 1
+    labels:
+      monitoring-key: middleware
+    managedFields:
+    - apiVersion: monitoring.coreos.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:monitoring-key: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"3f95cbd7-aa83-4561-add8-26cba88d49b8"}: {}
+        f:spec:
+          .: {}
+          f:endpoints: {}
+          f:namespaceSelector: {}
+          f:selector: {}
+      manager: keycloak-operator
+      operation: Update
+      time: "2024-01-31T21:46:52Z"
+    name: keycloak-service-monitor
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: keycloak.org/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Keycloak
+      name: keycloak
+      uid: 3f95cbd7-aa83-4561-add8-26cba88d49b8
+    resourceVersion: "51040341"
+    uid: 53092cac-9db6-41d3-8a38-7581a80c894f
+  spec:
+    endpoints:
+    - bearerTokenSecret:
+        key: ""
+      path: /auth/realms/master/metrics
+      port: keycloak
+      scheme: https
+      tlsConfig:
+        ca: {}
+        cert: {}
+        insecureSkipVerify: true
+    - bearerTokenSecret:
+        key: ""
+      path: /metrics
+      port: keycloak-monitoring
+      scheme: http
+      tlsConfig:
+        ca: {}
+        cert: {}
+        insecureSkipVerify: true
+    namespaceSelector: {}
+    selector:
+      matchLabels:
+        app: keycloak
+- apiVersion: monitoring.coreos.com/v1
+  kind: ServiceMonitor
+  metadata:
+    creationTimestamp: "2024-01-31T21:46:47Z"
+    generation: 1
+    labels:
+      monitoring-key: middleware
+      name: rhsso-operator
+    managedFields:
+    - apiVersion: monitoring.coreos.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:monitoring-key: {}
+            f:name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"521723c2-3819-4f3d-968a-dac4bef4ca17"}: {}
+        f:spec:
+          .: {}
+          f:endpoints: {}
+          f:namespaceSelector: {}
+          f:selector: {}
+      manager: keycloak-operator
+      operation: Update
+      time: "2024-01-31T21:46:47Z"
+    name: rhsso-operator-metrics
+    namespace: sso-noprod
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: rhsso-operator-metrics
+      uid: 521723c2-3819-4f3d-968a-dac4bef4ca17
+    resourceVersion: "51040280"
+    uid: 07a0d5ca-8bdf-4da0-b935-60aaa0e210bf
+  spec:
+    endpoints:
+    - bearerTokenSecret:
+        key: ""
+      port: http-metrics
+    - bearerTokenSecret:
+        key: ""
+      port: cr-metrics
+    namespaceSelector: {}
+    selector:
+      matchLabels:
+        monitoring-key: middleware
+        name: rhsso-operator
+kind: ServiceMonitorList
+metadata:
+  continue: ""
+  resourceVersion: "152573857"
