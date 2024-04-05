@@ -1,0 +1,16 @@
+---
+- name: Ejecutar el role sin parametrizar
+  hosts: localhost
+  tasks:
+    - name: Ejecutar role sin parametrizar
+      import_role:
+        name: bci.collection_hello.role_hello
+
+- name: Ejecutar el role parametrizando la variable saludo
+  hosts: localhost
+  tasks:
+    - name: Ejecutar role con variable saludo = 'victor'
+      import_role:
+        name: bci.collection_hello.role_hello
+      vars:
+        saludo: 'Victor'
