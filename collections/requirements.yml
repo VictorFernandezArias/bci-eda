@@ -1,3 +1,3 @@
 ---
 collections:
-- bci.collection_hello:1.0.0
+- name: bci.collection_hello:1.0.0
