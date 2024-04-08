@@ -13,4 +13,4 @@
       import_role:
         name: bci.collection_hello.role_hello
       vars:
-        saludo: 'Victor'
+        saludo: 'RedHat'
