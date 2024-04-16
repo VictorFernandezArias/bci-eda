@@ -9,7 +9,7 @@
         host: '{{ host }}'
         port: '{{ port }}'
         prompts:
-        - ''
+        - '>'
         timeout: 10
         pause: 2
         command:
