@@ -12,6 +12,6 @@
         port: '{{ port }}'
         ##prompts:
         ##- 'Enter Choice> '
-        timeout: 30
+        timeout: 10
         command:
         - exit
