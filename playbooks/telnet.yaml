@@ -14,4 +14,8 @@
         pause: 5
         command:
         - exit
+      register: salida  
         
+    - name: debug
+      debug: 
+        var: salida
