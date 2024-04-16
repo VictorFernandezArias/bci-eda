@@ -10,8 +10,8 @@
         #password: ''
         host: '{{ host }}'
         port: '{{ port }}'
-        ##prompts:
-        ##- 'Enter Choice> '
+        prompts:
+        - 'Enter Choice> '
         timeout: 10
         command:
         - exit
