@@ -13,6 +13,7 @@
         - 'Enter Choice> TACL 1>'
         timeout: 10
         pause: 2
+        check_all: false
         command:
         - tacl
         - logon super.super
