@@ -10,9 +10,8 @@
         port: '{{ port }}'
         prompts:
         - 'Enter Choice>'
-        - 'TACL 1>'
         timeout: 10
-        pause: 5
+        pause: 2
         command:
         - tacl
         - logon super.super
