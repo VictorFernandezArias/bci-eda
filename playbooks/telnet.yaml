@@ -14,4 +14,4 @@
         - 'Enter Choice> '
         timeout: 10
         command:
-        - exit
+        - EXIT
