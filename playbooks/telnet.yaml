@@ -11,7 +11,8 @@
         host: '{{ host }}'
         port: '{{ port }}'
         prompts:
-        - 'Enter Choice> '
+        - 'Enter Choice>'
+        - 'Password:'
         timeout: 10
         command:
         - tacl
