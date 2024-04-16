@@ -1,0 +1,16 @@
+---
+- name: Telnet Tandem
+  hosts: localhost
+  tasks:
+    - name: Prueba telnet
+      ansible.netcommon.telnet:
+        login_prompt: ''
+        password_prompt: ''
+        #user: ''
+        #password: ''
+        host: '{{ host }}'
+        port: '{{ port }}'
+        ##prompts:
+        ##- 'Enter Choice> '
+        command:
+        - exit
