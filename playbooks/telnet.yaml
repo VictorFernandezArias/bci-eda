@@ -13,6 +13,8 @@
         timeout: 10
         pause: 5
         command:
+        - tacl
+        - logon super.super
         - exit
       register: salida  
         
