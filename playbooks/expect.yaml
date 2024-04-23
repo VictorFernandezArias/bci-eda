@@ -3,10 +3,10 @@
   tasks:
   - name: expect 01
     ansible.builtin.expect:
-      command: /bin/bash -c "telnet {{ host }} {{ port }}"
+      command: telnet {{ host }} {{ port }}
       responses:
         Question:
-          - tacl
+          - Enter Choice> tacl
     register: salida
 
   - name: debug
