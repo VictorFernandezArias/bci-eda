@@ -6,7 +6,7 @@
       command: telnet {{ host }} {{ port }}
       responses:
         Question:
-          - Enter Choice> tacl
+          - Enter Choice>
     register: salida
 
   - name: debug
