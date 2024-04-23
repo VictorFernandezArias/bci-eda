@@ -1,0 +1,6 @@
+- name: expect
+  hosts: localhost
+  tasks:
+  - name: expect 01
+    ansible.builtin.expect:
+      command: 
