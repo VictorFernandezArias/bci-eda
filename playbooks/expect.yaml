@@ -6,7 +6,7 @@
       command: telnet {{ host }} {{ port }}
       responses:
         Enter\sChoice>:
-          - "tacl\n"
+          - "exit\n"
       timeout: 10
     register: salida
 
