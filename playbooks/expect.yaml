@@ -6,6 +6,8 @@
       command: telnet {{ host }} {{ port }}
       responses:
         Enter\sChoice>:
+          - "tacl\n"
+          - "logon super.super\n"
           - "exit\n"
       timeout: 10
     register: salida
