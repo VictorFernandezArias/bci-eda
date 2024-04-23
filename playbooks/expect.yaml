@@ -3,4 +3,11 @@
   tasks:
   - name: expect 01
     ansible.builtin.expect:
-      command: 
+      command: telnet 
+      responses:
+        [>]: "tacl"
+    register: salida
+
+  - name: debug
+    debug:
+      var: salida
