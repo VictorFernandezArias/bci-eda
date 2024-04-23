@@ -8,8 +8,7 @@
         Enter\sChoice>:
           - "tacl\n"
         TACL\s1>:
-          - "logon super.super\n"
-          - "exit\n"
+          - "logon\ssuper.super\n"
       timeout: 10
     register: salida
 
