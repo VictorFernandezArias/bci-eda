@@ -5,9 +5,9 @@
     ansible.builtin.expect:
       command: telnet {{ host }} {{ port }}
       responses:
-        Question:
-          - Enter Choice>
-          - Enter Choice> exit
+        Enter\sChoice>:
+          - "tacl\n"
+      timeout: 30
     register: salida
 
   - name: debug
