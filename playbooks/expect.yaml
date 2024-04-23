@@ -7,6 +7,7 @@
       responses:
         Question:
           - Enter Choice>
+          - Enter Choice> exit
     register: salida
 
   - name: debug
