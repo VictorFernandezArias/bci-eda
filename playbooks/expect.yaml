@@ -3,7 +3,7 @@
   tasks:
   - name: expect 01
     ansible.builtin.expect:
-      command: telnet {{ host }} {{ port }}
+      command: /bin/bash -c "telnet {{ host }} {{ port }}"
       responses:
         Question:
           - tacl
