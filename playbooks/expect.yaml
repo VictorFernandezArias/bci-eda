@@ -5,7 +5,8 @@
     ansible.builtin.expect:
       command: telnet {{ host }} {{ port }}
       responses:
-        [>]: "tacl"
+        Question:
+          - tacl
     register: salida
 
   - name: debug
