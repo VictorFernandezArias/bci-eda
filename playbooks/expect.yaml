@@ -4,7 +4,7 @@
   - name: expect 01
     ansible.builtin.expect:
       command: telnet {{ host }} {{ port }}
-      echo: yes
+      echo: true
       responses:
         "Enter Choice>" : "tacl\n"
         "TACL 1>": "logon super.super\n"
