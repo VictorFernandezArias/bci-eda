@@ -6,7 +6,7 @@
       command: telnet {{ host }} {{ port }}
       echo: yes
       responses:
-        "Enter\sChoice>" : "tacl\n"
+        "Enter Choice>" : "tacl\n"
         "TACL 1>": "logon super.super\n"
       timeout: 10
     register: salida
