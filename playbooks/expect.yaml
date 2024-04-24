@@ -8,9 +8,10 @@
       responses:
         "Enter Choice>" : "tacl"
         "TACL 1>": "logon super.super"
-        "TACL 1>": "exit"
-      timeout: 10
+        "Enter Choice>": "exit"
+      timeout: 20
     register: salida
+    ignore_errors: yes
 
   - name: debug
     debug:
