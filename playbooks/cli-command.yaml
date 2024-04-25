@@ -1,5 +1,5 @@
 - name: cli-command
-  hosts: localhost
+  hosts: all
   tasks:
   - name: multiple prompt, multiple answer (mandatory check for all prompts)
     ansible.netcommon.cli_command:
