@@ -9,10 +9,11 @@
         host: '{{ host }}'
         port: '{{ port }}'
         prompts:
-        - '[>]'
-        timeout: 10
+        - 'Enter Choice>'
+        - 'TACL 1>'
+        - 'Password:'
+        timeout: 15
         pause: 2
-        check_all: false
         command:
         - tacl
         - logon super.super
