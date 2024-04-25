@@ -7,8 +7,8 @@
       echo: true
       responses:
         "Enter Choice>" : "tacl\n"
-        "TACL 1>": "logon super.super\n"
-        "Password:": "test\n"
+        "TACL 1>" : "logon super.super\n"
+        "Password:" : "test\n"
       timeout: 20
     register: salida
     ignore_errors: yes
