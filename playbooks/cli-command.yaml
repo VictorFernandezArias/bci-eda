@@ -1,1 +1,15 @@
-
+- name: cli-command
+  hosts: localhost
+  tasks:
+  - name: multiple prompt, multiple answer (mandatory check for all prompts)
+    ansible.netcommon.cli_command:
+      command: telnet {{ host }} {{ port }}
+      check_all: true
+      prompt:
+      - "Enter Choice>"
+      - "TACL 1>"
+      - "Password:"
+      answer:
+      - tacl
+      - logon super.super
+      - test
