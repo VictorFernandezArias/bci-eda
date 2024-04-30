@@ -3,13 +3,13 @@
   tasks:
   - name: expect 01
     ansible.builtin.expect:
-      command: telnet {{ host }} {{ port }}
+      command: telnet {{ tandem_host }} {{ tandem_port }}
       echo: true
       responses:
-        (.*)Enter Choice>(.*) : tacl
-        (.*)TACL 1>(.*) : "logon super.super\r"
-        (.*)Password(.*) : test
-        (.*)$SYSTEM STARTUP 1>(.*) : exit
+        (.*)Enter Choice>(.*) : "tacl\r"
+        (.*)TACL 1>(.*) : "logon {{ tandem_user }}\r"
+        (.*)Password(.*) : "{{ tandem_password }}"
+        (.*)$SYSTEM STARTUP 1>(.*) : "exit\r"
       timeout: 20
     register: salida
     ignore_errors: yes
