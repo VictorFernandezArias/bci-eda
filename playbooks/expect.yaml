@@ -7,7 +7,7 @@
       echo: true
       responses:
         (.*)Enter Choice>(.*) : "tacl\r"
-        (.*)TACL 1>(.*) : "logon {{ tandem_user }}\r"
+        (.*)TACL 1>(.*) : logon {{ tandem_user }}\r
         (.*)Password(.*) : "{{ tandem_password }}"
         (.*)$SYSTEM STARTUP 1>(.*) : "exit\r"
       timeout: 20
