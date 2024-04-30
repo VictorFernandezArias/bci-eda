@@ -6,15 +6,10 @@
       command: telnet {{ tandem_host }} {{ tandem_port }}
       echo: true
       responses:
-        "(.*)Enter Choice>(.*)": 
-          - "tacl"
-        "(.*)TACL 1>(.*)": 
-          - "logon {{tandem_user}}"
-          - "\r"
-        "(.*)Password(.*)": 
-          - "{{tandem_password}}"
-        "(.*)$SYSTEM STARTUP 1>(.*)": 
-          - "exit"
+        "(.*)Enter Choice>(.*)": "tacl"
+        "(.*)TACL 1>(.*)": "logon {{tandem_user}}"
+        "(.*)Password(.*)": "{{tandem_password}}"
+        "(.*)$SYSTEM STARTUP 1>(.*)": "exit"
       timeout: 20
     register: salida
     ignore_errors: yes
