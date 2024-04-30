@@ -5,7 +5,7 @@
     ansible.builtin.expect:
       command: telnet {{ tandem_host }} {{ tandem_port }}
       echo: true
-      responses:
+      raw_responses:
         (.*)Enter Choice>(.*) : "tacl\r"
         (.*)TACL 1>(.*) : "logon {{tandem_user}}\r"
         (.*)Password(.*) : "{{tandem_password}}\r"
