@@ -7,13 +7,13 @@
       echo: true
       responses:
         "(.*)Enter Choice>(.*)": 
-          - "tacl\r"
+          - "tacl"
         "(.*)TACL 1>(.*)": 
-          - "logon {{tandem_user}}\r"
+          - "logon {{tandem_user}}"
         "(.*)Password(.*)": 
-          - "{{tandem_password}}\r"
+          - "{{tandem_password}}"
         "(.*)$SYSTEM STARTUP 1>(.*)": 
-          - "exit\r"
+          - "exit"
       timeout: 20
     register: salida
     ignore_errors: yes
