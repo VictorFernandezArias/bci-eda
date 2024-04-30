@@ -7,7 +7,7 @@
       echo: true
       responses:
         (.*)Enter Choice>(.*) : tacl
-        (.*)TACL 1>(.*) : logon super.super
+        (.*)TACL 1>(.*) : logon super.super \r
         (.*)Password(.*) : test
         (.*)$SYSTEM STARTUP 1>(.*) : exit
       timeout: 20
