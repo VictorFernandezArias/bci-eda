@@ -8,7 +8,8 @@
       responses:
         (.*)Enter Choice>(.*) : "tacl\n"
         (.*)TACL 1>(.*) : "logon super.super\n"
-        (.*)Password:(.*) : "test\n"
+        (.*)Password(.*) : "test\n"
+        (.*)$SYSTEM STARTUP 1>(.*) : exit
       timeout: 20
     register: salida
     ignore_errors: yes
