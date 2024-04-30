@@ -10,7 +10,7 @@
           - "tacl"
         "(.*)TACL 1>(.*)": 
           - "logon {{tandem_user}}"
-          - \n
+          - "\r"
         "(.*)Password(.*)": 
           - "{{tandem_password}}"
         "(.*)$SYSTEM STARTUP 1>(.*)": 
