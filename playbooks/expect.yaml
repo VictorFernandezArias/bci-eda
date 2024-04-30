@@ -8,7 +8,7 @@
       responses:
         (.*)Enter Choice>(.*) : "tacl\r"
         (.*)TACL 1>(.*) : "logon appansible\r"
-        (.*)Password(.*) : "{{ tandem_password }}""\r"
+        (.*)Password(.*) : "{{ tandem_password }}"\r
         (.*)$SYSTEM STARTUP 1>(.*) : "exit\r"
       timeout: 20
     register: salida
