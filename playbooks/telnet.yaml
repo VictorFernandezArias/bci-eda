@@ -9,14 +9,15 @@
         host: '{{ host }}'
         port: '{{ port }}'
         prompts:
-        - 'Enter Choice> '
-        - 'TACL 1> '
+        - 'Enter Choice>'
+        - 'TACL 1>'
         - 'Password:'
         timeout: 15
         pause: 2
         command:
         - tacl
         - logon super.super
+        - pass
         - exit
       register: salida  
         
