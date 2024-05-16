@@ -9,9 +9,9 @@
         host: '{{ host }}'
         port: '{{ port }}'
         prompts:
-        - 'Enter Choice>'
-        - 'TACL 1>'
-        - 'Password:'
+        - '(.*)Enter Choice>'
+        - '(.*)TACL 1>'
+        - '(.*)Password:'
         timeout: 15
         pause: 2
         command:
