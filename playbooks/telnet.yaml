@@ -8,6 +8,7 @@
         password_prompt: ''
         host: '{{ host }}'
         port: '{{ port }}'
+        crlf: true
         prompts:
         - '(.*)Enter Choice>'
         - '(.*)TACL 1>'
