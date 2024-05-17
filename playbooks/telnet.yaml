@@ -11,7 +11,7 @@
         crlf: true
         user: tacl
         prompts:
-        - 'Enter Choice> TACL 1>'
+        - 'Enter Choice> TACL 1> '
         #- '(.*)Enter Choice>'
         #- '(.*)TACL 1>'
         #- '(.*)Password:'
