@@ -11,14 +11,14 @@
         crlf: true
         user: tacl
         prompts:
-        - 'Enter Choice>'
+        - 'TACL 1>'
         #- '(.*)Enter Choice>'
         #- '(.*)TACL 1>'
         #- '(.*)Password:'
         timeout: 15
         pause: 2
         command:
-        - tacl
+        #- tacl
         - logon super.super
         - pass
         - exit
