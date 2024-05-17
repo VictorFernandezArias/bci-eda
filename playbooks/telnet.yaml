@@ -9,6 +9,7 @@
         host: '{{ host }}'
         port: '{{ port }}'
         crlf: true
+        user: tacl
         prompts:
         - '(.*)Enter Choice>'
         - '(.*)TACL 1>'
